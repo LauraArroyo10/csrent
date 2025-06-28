@@ -1,5 +1,6 @@
 package com.csrent.service;
 
+import com.csrent.dto.UserDTO;
 import com.csrent.model.User;
 import com.csrent.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,12 @@ public class UserService {
         return userRepository.findById(id).get();
     }
 
-    public User createUser(User user) {
+    public User createUser(UserDTO userDTO) {
+        User user = new User();
+        user.setName(userDTO.getName());
+        user.setEmail(userDTO.getEmail());
+        user.setPassword(userDTO.getPassword());
+//        user.setRol(.valueOf(userDTO.getRol()));
         return userRepository.save(user);
     }
 

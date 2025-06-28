@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@RequestBody UserDTO user) {
         User createdUser = userService.createUser(user);
         return ResponseEntity.status(201).body(createdUser);
     }
@@ -39,7 +39,7 @@ public class UserController {
 
     @PostMapping("/signUp")
     public ResponseEntity<User> signUp(@Valid @RequestBody UserDTO userDTO) {
-        User createdUser = userService.createUser(new User());
+        User createdUser = userService.createUser(new UserDTO());
 
 
         return ResponseEntity.status(201).body(createdUser);
