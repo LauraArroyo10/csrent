@@ -20,13 +20,22 @@ public class UserService {
         return userRepository.findById(id).get();
     }
 
-    public User createUser(UserDTO userDTO) {
+    public UserDTO createUser(UserDTO userDTO) {
         User user = new User();
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
-//        user.setRol(.valueOf(userDTO.getRol()));
-        return userRepository.save(user);
+        user.setRol(userDTO.getRol()); // Si es un enum, usa Enum.valueOf()
+
+        User savedUser = userRepository.save(user);
+
+        // Convertir de nuevo a DTO si es necesario
+        return new UserDTO(
+                savedUser.getName(),
+                savedUser.getEmail(),
+                savedUser.getPassword(),
+                savedUser.getRol()
+        );
     }
 
     public User updateUser(User user) {

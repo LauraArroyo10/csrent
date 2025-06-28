@@ -30,18 +30,16 @@ public class UserController {
         }
     }
 
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody UserDTO user) {
-        User createdUser = userService.createUser(user);
-        return ResponseEntity.status(201).body(createdUser);
-    }
+//    @PostMapping
+//    public ResponseEntity<User> createUser(@RequestBody UserDTO user) {
+//        User createdUser = userService.createUser(user);
+//        return ResponseEntity.status(201).body(createdUser);
+//    }
 
 
     @PostMapping("/signUp")
-    public ResponseEntity<User> signUp(@Valid @RequestBody UserDTO userDTO) {
-        User createdUser = userService.createUser(new UserDTO());
-
-
+    public ResponseEntity<UserDTO> signUp(@Valid @RequestBody UserDTO userDTO) {
+        UserDTO createdUser = userService.createUser(userDTO);
         return ResponseEntity.status(201).body(createdUser);
     }
 
