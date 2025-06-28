@@ -25,11 +25,10 @@ public class UserService {
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
-        user.setRol(userDTO.getRol()); // Si es un enum, usa Enum.valueOf()
+        user.setRol(userDTO.getRol());
 
         User savedUser = userRepository.save(user);
 
-        // Convertir de nuevo a DTO si es necesario
         return new UserDTO(
                 savedUser.getName(),
                 savedUser.getEmail(),

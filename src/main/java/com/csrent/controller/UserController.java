@@ -43,7 +43,6 @@ public class UserController {
         return ResponseEntity.status(201).body(createdUser);
     }
 
-
     @PutMapping
     public ResponseEntity<User> updateUser(@RequestBody User user) {
         User updatedUser = userService.updateUser(user);
